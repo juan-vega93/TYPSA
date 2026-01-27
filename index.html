@@ -1,12 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incidencias</title>
+    <title>Portal de Incidencias</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Incidencias BIM</h1>
-    
+
+    <header class="header-nav">
+        <h1>Incidencias IREN-SUR</h1>
+        
+        <div class="button-group">
+            <button class="btn-guinda active" onclick="cambiarApp('https://app.powerbi.com/view?r=eyJrIjoiMzEwMDExYTItNjk2ZC00NzRmLThiMjEtYjVmNjY2Y2U1OTc1IiwidCI6ImQ0OTU0YzU0LTdiNmItNDI3Ny1hZjYwLWU1MzNiYWZjZDAyYyIsImMiOjh9', this)">
+                Dashboard BIM
+            </button>
+            <button class="btn-guinda" onclick="cambiarApp('TU_NUEVO_LINK_AQUI', this)">
+                PROXIMO
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <iframe 
+            id="visor-iframe"
+            title="Visor de Incidencias" 
+            src="https://app.powerbi.com/view?r=eyJrIjoiMzEwMDExYTItNjk2ZC00NzRmLThiMjEtYjVmNjY2Y2U1OTc1IiwidCI6ImQ0OTU0YzU0LTdiNmItNDI3Ny1hZjYwLWU1MzNiYWZjZDAyYyIsImMiOjh9" 
+            allowFullScreen="true">
+        </iframe>
+    </main>
+
+    <script>
+        function cambiarApp(url, btn) {
+            // Cambiamos el src del iframe
+            const iframe = document.getElementById('visor-iframe');
+            iframe.src = url;
+
+            // Cambiamos el estado visual de los botones
+            const botones = document.querySelectorAll('.btn-guinda');
+            botones.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+
 </body>
 </html>
