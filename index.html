@@ -9,10 +9,10 @@
 <body>
 
     <header class="header-nav">
-        <h1>Incidencias IREN-SUR 30.01</h1>
+        <h1>Incidencias IREN-SUR <span id="fecha-actual"></span></h1>
         
         <div class="button-group">
-            <button class="btn-guinda active" onclick="cambiarApp('https://app.powerbi.com/view?r=eyJrIjoiMTc0OTcxOTYtYjRiYy00MGUzLWE2NTMtNjVkYzgxYzU0NTE5IiwidCI6ImQ0OTU0YzU0LTdiNmItNDI3Ny1hZjYwLWU1MzNiYWZjZDAyYyIsImMiOjh9', this)">
+            <button class="btn-guinda active" onclick="cambiarApp('https://app.powerbi.com/view?r=eyJrIjoiZDY5MWVmMjItNTFhNS00ODFlLWI1NzEtODc3OTEyMTZjODZiIiwidCI6ImQ0OTU0YzU0LTdiNmItNDI3Ny1hZjYwLWU1MzNiYWZjZDAyYyIsImMiOjh9', this)">
                 Dashboard BIM
             </button>
             <button class="btn-guinda" onclick="cambiarApp('TU_NUEVO_LINK_AQUI', this)">
@@ -25,12 +25,21 @@
         <iframe 
             id="visor-iframe"
             title="Visor de Incidencias" 
-            src="https://app.powerbi.com/view?r=eyJrIjoiMTc0OTcxOTYtYjRiYy00MGUzLWE2NTMtNjVkYzgxYzU0NTE5IiwidCI6ImQ0OTU0YzU0LTdiNmItNDI3Ny1hZjYwLWU1MzNiYWZjZDAyYyIsImMiOjh9" 
+            src="https://app.powerbi.com/view?r=eyJrIjoiZDY5MWVmMjItNTFhNS00ODFlLWI1NzEtODc3OTEyMTZjODZiIiwidCI6ImQ0OTU0YzU0LTdiNmItNDI3Ny1hZjYwLWU1MzNiYWZjZDAyYyIsImMiOjh9" 
             allowFullScreen="true">
         </iframe>
     </main>
 
     <script>
+        // Actualizar fecha basada en última modificación del archivo
+        function actualizarFecha() {
+            const fecha = new Date(document.lastModified);
+            const dia = String(fecha.getDate()).padStart(2, '0');
+            const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+            document.getElementById('fecha-actual').textContent = `${dia}.${mes}`;
+        }
+
+        actualizarFecha();
         function cambiarApp(url, btn) {
             // Cambiamos el src del iframe
             const iframe = document.getElementById('visor-iframe');
