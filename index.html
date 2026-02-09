@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -53,4 +54,61 @@
     </script>
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Incidencias</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header-nav">
+        <h1>Incidencias IREN-SUR <span id="fecha-actual"></span></h1>
+        
+        <div class="button-group">
+            <button class="btn-guinda active" onclick="cambiarApp('https://app.powerbi.com/view?r=eyJrIjoiYTMxZTBkYzUtZTlhMS00ZGQwLThmMzMtN2FjNzY0ZmVjODI4IiwidCI6ImQ0OTU0YzU0LTdiNmItNDI3Ny1hZjYwLWU1MzNiYWZjZDAyYyIsImMiOjh9', this)">
+                Dashboard BIM
+            </button>
+            <button class="btn-guinda" onclick="cambiarApp('TU_NUEVO_LINK_AQUI', this)">
+                PROXIMO
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <iframe 
+            id="visor-iframe"
+            title="Visor de Incidencias" 
+            src="https://app.powerbi.com/view?r=eyJrIjoiYTMxZTBkYzUtZTlhMS00ZGQwLThmMzMtN2FjNzY0ZmVjODI4IiwidCI6ImQ0OTU0YzU0LTdiNmItNDI3Ny1hZjYwLWU1MzNiYWZjZDAyYyIsImMiOjh9" 
+            allowFullScreen="true">
+        </iframe>
+    </main>
+
+    <script>
+        // Actualizar fecha basada en última modificación del archivo
+        function actualizarFecha() {
+            const fecha = new Date(document.lastModified);
+            const dia = String(fecha.getDate()).padStart(2, '0');
+            const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+            document.getElementById('fecha-actual').textContent = `${dia}.${mes}`;
+        }
+
+        actualizarFecha();
+        function cambiarApp(url, btn) {
+            // Cambiamos el src del iframe
+            const iframe = document.getElementById('visor-iframe');
+            iframe.src = url;
+
+            // Cambiamos el estado visual de los botones
+            const botones = document.querySelectorAll('.btn-guinda');
+            botones.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+
+</body>
+>>>>>>> 00eedcb37c02b48792b247d6d2e1f44fea60b278
 </html>
